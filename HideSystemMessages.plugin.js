@@ -3,7 +3,7 @@
  * @author TenorTheHusky
  * @authorId 563652755814875146
  * @description Adds buttons to toggle system messages and chat dividers
- * @version 1.0.0
+ * @version 1.0.1
  * @website https://github.com/programmer2514/BetterDiscord-HideSystemMessages
  * @source https://raw.githubusercontent.com/programmer2514/BetterDiscord-HideSystemMessages/main/HideSystemMessages.plugin.js
  */
@@ -19,12 +19,17 @@ module.exports = (() => {
                 discord_id: '563652755814875146',
                 github_username: 'programmer2514'
             }],
-            version: '1.0.0',
+            version: '1.0.1',
             description: 'Adds buttons to toggle system messages and chat dividers',
             github: 'https://github.com/programmer2514/BetterDiscord-HideSystemMessages',
             github_raw: 'https://raw.githubusercontent.com/programmer2514/BetterDiscord-HideSystemMessages/main/HideSystemMessages.plugin.js'
         },
         changelog: [{
+            title: '1.0.1',
+            items: [
+                'Fixed initial startup issues'
+            ]
+        }, {
             title: '1.0.0',
             items: [
                 'Initial release'
@@ -70,19 +75,19 @@ module.exports = (() => {
 
         // Main plugin code, called by start() and onSwitch()
         initialize() {
-            
+
             // Abstract used classes and elements
             this.classSelected = 'selected-29KTGM';
             this.classIconWrapper = 'iconWrapper-2awDjA';
             this.classClickable = 'clickable-ZD7xvu';
-            this.classAppWrapper = 'layers-OrUESM';
-            
+            this.classAppWrapper = 'app-2CXKsg';
+
             this.classSystemMessage = 'systemMessage-1H1Z20'
             this.classChatDivider = 'divider-IqmEqJ'
-            
+
             this.insertPoint = document.querySelector('.messagesWrapper-RpOMA3');
-            this.appWrapper = document.querySelector('.app-2CXKsg');
-            
+            this.appWrapper = document.querySelector('.app-3xd6d0');
+
             let hsm = this;
 
             // Clean up UI
@@ -91,7 +96,7 @@ module.exports = (() => {
             // Create eventListener
             this.eventListenerController = new AbortController();
             this.eventListenerSignal = this.eventListenerController.signal;
-            
+
             // Create plugin stylesheet
             this.pluginStyle = document.createElement("style");
             this.pluginStyle.setAttribute('id', 'hsm-stylesheet');
@@ -142,10 +147,10 @@ module.exports = (() => {
             if (BdApi.getData('HideSystemMessages', 'systemMessageButtonActive') === 'false') {
                 hsm.systemMessageButton.classList.remove(hsm.classSelected);
                 hsm.systemMessageButton.style.opacity = '0.5';
-                        
+
                 hsm.pluginStyle.sheet.deleteRule(0);
                 hsm.pluginStyle.sheet.insertRule("." + hsm.classSystemMessage + " { display: none;}", 0);
-                
+
             } else if (BdApi.getData('HideSystemMessages', 'systemMessageButtonActive') === 'true') {
                 hsm.systemMessageButton.classList.add(hsm.classSelected);
                 hsm.systemMessageButton.style.opacity = '1.0';
@@ -159,10 +164,10 @@ module.exports = (() => {
             if (BdApi.getData('HideSystemMessages', 'chatDividerButtonActive') === 'false') {
                 hsm.chatDividerButton.classList.remove(hsm.classSelected);
                 hsm.chatDividerButton.style.opacity = '0.5';
-                        
+
                 hsm.pluginStyle.sheet.deleteRule(1);
                 hsm.pluginStyle.sheet.insertRule("." + hsm.classChatDivider + " { display: none;}", 1);
-                
+
             } else if (BdApi.getData('HideSystemMessages', 'chatDividerButtonActive') === 'true') {
                 hsm.chatDividerButton.classList.add(hsm.classSelected);
                 hsm.chatDividerButton.style.opacity = '1.0';
@@ -292,44 +297,44 @@ module.exports = (() => {
             switch (index) {
                 case 0:
                     if (BdApi.getData('HideSystemMessages', 'systemMessageButtonActive') === 'true') {
-                        
+
                         hsm.pluginStyle.sheet.deleteRule(0);
                         hsm.pluginStyle.sheet.insertRule("." + hsm.classSystemMessage + " { display: none;}", 0);
-                        
+
                         BdApi.setData('HideSystemMessages', 'systemMessageButtonActive', 'false');
                         hsm.systemMessageButton.classList.remove(hsm.classSelected);
                         hsm.systemMessageButton.style.opacity = '0.5';
                     } else {
-                        
+
                         hsm.pluginStyle.sheet.deleteRule(0);
                         hsm.pluginStyle.sheet.insertRule("." + hsm.classSystemMessage + " {}", 0);
-                        
+
                         BdApi.setData('HideSystemMessages', 'systemMessageButtonActive', 'true');
                         hsm.systemMessageButton.classList.add(hsm.classSelected);
                         hsm.systemMessageButton.style.opacity = '1.0';
                     }
                     break;
-                    
+
                 case 1:
                     if (BdApi.getData('HideSystemMessages', 'chatDividerButtonActive') === 'true') {
-                        
+
                         hsm.pluginStyle.sheet.deleteRule(1);
                         hsm.pluginStyle.sheet.insertRule("." + hsm.classChatDivider + " { display: none;}", 1);
-                        
+
                         BdApi.setData('HideSystemMessages', 'chatDividerButtonActive', 'false');
                         hsm.chatDividerButton.classList.remove(hsm.classSelected);
                         hsm.chatDividerButton.style.opacity = '0.5';
                     } else {
-                        
+
                         hsm.pluginStyle.sheet.deleteRule(1);
                         hsm.pluginStyle.sheet.insertRule("." + hsm.classChatDivider + " {}", 1);
-                        
+
                         BdApi.setData('HideSystemMessages', 'chatDividerButtonActive', 'true');
                         hsm.chatDividerButton.classList.add(hsm.classSelected);
                         hsm.chatDividerButton.style.opacity = '1.0';
                     }
                     break;
-                    
+
                 default:
                     break;
             }
