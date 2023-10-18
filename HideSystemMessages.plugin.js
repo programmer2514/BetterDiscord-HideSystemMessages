@@ -4,6 +4,8 @@
  * @authorId 563652755814875146
  * @description Adds buttons to toggle system messages and chat dividers
  * @version 1.0.3
+ * @donate https://ko-fi.com/benjaminpryor
+ * @patreon https://www.patreon.com/BenjaminPryor
  * @website https://github.com/programmer2514/BetterDiscord-HideSystemMessages
  * @source https://raw.githubusercontent.com/programmer2514/BetterDiscord-HideSystemMessages/main/HideSystemMessages.plugin.js
  */
@@ -19,25 +21,23 @@ module.exports = (() => {
                 discord_id: '563652755814875146',
                 github_username: 'programmer2514'
             }],
-            version: '1.0.3',
+            version: '1.1.0',
             description: 'Adds buttons to toggle system messages and chat dividers',
             github: 'https://github.com/programmer2514/BetterDiscord-HideSystemMessages',
             github_raw: 'https://raw.githubusercontent.com/programmer2514/BetterDiscord-HideSystemMessages/main/HideSystemMessages.plugin.js'
         },
         changelog: [{
-            title: '1.0.3',
+            title: '1.1.0',
             items: [
+                'Hotfix for newest Discord release (breaks plugin on Discord versions <238110)',
+                'Added donation links'
+            ]
+        }, {
+            title: '1.0.1 - 1.0.3',
+            items: [
+                'Fixed initial startup issues',
+                'Cleaned up method of getting plugin instance',
                 'Cleaned up unnecessary console warnings'
-            ]
-        }, {
-            title: '1.0.2',
-            items: [
-                'Cleaned up method of getting plugin instance'
-            ]
-        }, {
-            title: '1.0.1',
-            items: [
-                'Fixed initial startup issues'
             ]
         }, {
             title: '1.0.0',
@@ -96,7 +96,7 @@ module.exports = (() => {
             this.classChatDivider = 'divider-IqmEqJ'
 
             this.insertPoint = document.querySelector('.messagesWrapper-RpOMA3');
-            this.appWrapper = document.querySelector('.app-3xd6d0');
+            this.appWrapper = document.querySelector('.app-1BipOi');
 
             // Clean up UI
             this.terminate();
