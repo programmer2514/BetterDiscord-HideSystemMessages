@@ -1,6 +1,6 @@
 /**
  * @name HideSystemMessages
- * @author TenorTheHusky
+ * @author programmer2514
  * @authorId 563652755814875146
  * @description Adds buttons to toggle system messages and chat dividers
  * @version 1.2.0
@@ -16,7 +16,7 @@ module.exports = (() => {
     info: {
       name: 'HideSystemMessages',
       authors: [{
-        name: 'TenorTheHusky',
+        name: 'programmer2514',
         discord_id: '563652755814875146',
         github_username: 'programmer2514',
       }],
