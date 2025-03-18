@@ -1,5 +1,5 @@
 # HideSystemMessages for BetterDiscord
-A simple BetterDiscord plugin that adds buttons to toggle system messages and chat dividers.
+A BetterDiscord plugin that adds buttons to toggle system messages and chat dividers.
 
 #### [> Check out my other plugins <](https://github.com/programmer2514/BetterDiscord-Plugins)
 
